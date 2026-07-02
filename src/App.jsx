@@ -1,23 +1,17 @@
 import { restaurants } from './mocks/mock'
+import MenuList from './components/menu-list'
+import Reviews from './components/reviews'
 
 function App() {
     return (
         <div>
             {restaurants.map((restaurant) => (
                 <div key={restaurant.id}>
-                    <h1>{restaurant.name}</h1>
+                    <h2>{restaurant.name}</h2>
                     <h3>Меню</h3>
-                    <ul>
-                        {restaurant.menu.map((menuItem) => (
-                            <li key={menuItem.id}>{menuItem.name}</li>
-                        ))}
-                    </ul>
+                    <MenuList menu={restaurant.menu} />
                     <h3>Отзывы</h3>
-                    <ul>
-                        {restaurant.reviews.map((review) => (
-                            <li key={review.id}>{review.text}</li>
-                        ))}
-                    </ul>
+                    <Reviews reviews={restaurant.reviews} />
                 </div>
             ))}
         </div>
