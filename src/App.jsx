@@ -1,20 +1,11 @@
-import { restaurants } from './mocks/mock'
-import MenuList from './components/menu-list'
-import Reviews from './components/reviews'
+import MainLayout from './components/layouts/main-layout/main-layout'
+import RestaurantsLayout from './components/layouts/restaurants-layout/restaurants-layout'
 
 function App() {
     return (
-        <div>
-            {restaurants.map((restaurant) => (
-                <div key={restaurant.id}>
-                    <h2>{restaurant.name}</h2>
-                    <h3>Меню</h3>
-                    <MenuList menu={restaurant.menu} />
-                    <h3>Отзывы</h3>
-                    <Reviews reviews={restaurant.reviews} />
-                </div>
-            ))}
-        </div>
+        <MainLayout header={'header'} footer={'footer'}>
+            <RestaurantsLayout/>
+        </MainLayout>
     )
 }
 
