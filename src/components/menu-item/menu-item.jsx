@@ -1,9 +1,10 @@
 import { useState } from 'react'
 import classes from './menu-item.module.css'
+
 export default function MenuItem({ name }) {
     const [count, setCount] = useState(0)
-    const handleChangeCount = (n) => {
-        const newCount = count + n
+    const handleChangeCount = (delta) => {
+        const newCount = count + delta
         setCount((prevState) =>
             newCount >= 0 && newCount <= 5 ? newCount : prevState,
         )
