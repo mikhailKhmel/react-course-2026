@@ -1,0 +1,10 @@
+.tab {
+    border: 1px solid black;
+    border-radius: 8px;
+    padding: 0.5rem;
+    cursor: pointer;
+}
+
+.tab[data-selected="true"] {
+    border: 1px solid red;
+}
