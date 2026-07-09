@@ -5,6 +5,6 @@
     cursor: pointer;
 }
 
-.tab[data-selected="true"] {
+.tab[data-selected='true'] {
     border: 1px solid red;
 }

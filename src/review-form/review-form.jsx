@@ -1,47 +1,21 @@
-import { useMemo, useReducer } from 'react'
 import Counter from '../components/counter/counter'
 import classes from './review-form.module.css'
-import reviewFormReducer from './review-form-reducer'
+import useReviewForm from './use-review-form'
 
 export default function ReviewForm({ onAddReview }) {
-    const [state, dispatch] = useReducer(reviewFormReducer, {
-        name: '',
-        text: '',
-        rating: 1,
-    })
-
-    const disableClear = useMemo(() => {
-        return state.name === '' && state.text === ''
-    }, [state])
-
-    const disableSubmit = useMemo(() => {
-        return state.name === '' || state.text === ''
-    }, [state])
-
-    const handleChange = (fieldName, value) => {
-        dispatch({ type: fieldName, payload: value })
-    }
-
-    const handleReset = () => {
-        dispatch({ type: 'reset' })
-    }
-
-    const handleSubmit = (e) => {
-        e.preventDefault()
-        onAddReview({ ...state })
-        dispatch({ type: 'reset' })
-    }
+    const { state, disableClear, disableSubmit, onChange, onReset, onSubmit } =
+        useReviewForm({ onAddItem: onAddReview })
 
     return (
         <div className={classes.container}>
             <h3>Форма отзыва</h3>
             <div className={classes.field}>
-                <label htmlFor='name'>Имя</label>
+                <label htmlFor='user'>Имя</label>
                 <input
-                    id='name'
-                    name='name'
-                    value={state.name}
-                    onChange={(e) => handleChange('name', e.target.value)}
+                    id='user'
+                    name='user'
+                    value={state.user}
+                    onChange={(e) => onChange('user', e.target.value)}
                 />
             </div>
             <div className={classes.field}>
@@ -50,7 +24,7 @@ export default function ReviewForm({ onAddReview }) {
                     id='text'
                     name='text'
                     value={state.text}
-                    onChange={(e) => handleChange('text', e.target.value)}
+                    onChange={(e) => onChange('text', e.target.value)}
                 />
             </div>
             <div className={classes.field}>
@@ -60,15 +34,15 @@ export default function ReviewForm({ onAddReview }) {
                     max={5}
                     min={1}
                     onChange={(delta) =>
-                        handleChange('rating', state.rating + delta)
+                        onChange('rating', state.rating + delta)
                     }
                 />
             </div>
             <div className={classes.buttonRow}>
-                <button disabled={disableClear} onClick={handleReset}>
+                <button disabled={disableClear} onClick={onReset}>
                     Очистить
                 </button>
-                <button disabled={disableSubmit} onClick={handleSubmit}>
+                <button disabled={disableSubmit} onClick={onSubmit}>
                     Добавить
                 </button>
             </div>
