@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import classes from './menu-item.module.css'
+import Counter from '../counter/counter'
 
 export default function MenuItem({ name }) {
     const [count, setCount] = useState(0)
@@ -13,21 +14,12 @@ export default function MenuItem({ name }) {
         <li className={classes.menuItem}>
             {name}
 
-            <div className={classes.counter}>
-                <button
-                    disabled={count === 0}
-                    onClick={() => handleChangeCount(-1)}
-                >
-                    -
-                </button>
-                {count}
-                <button
-                    disabled={count === 5}
-                    onClick={() => handleChangeCount(1)}
-                >
-                    +
-                </button>
-            </div>
+            <Counter
+                count={count}
+                min={0}
+                max={5}
+                onChange={handleChangeCount}
+            />
         </li>
     )
 }

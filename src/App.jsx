@@ -4,7 +4,7 @@ import RestaurantsLayout from './components/layouts/restaurants-layout/restauran
 function App() {
     return (
         <MainLayout header={'header'} footer={'footer'}>
-            <RestaurantsLayout/>
+            <RestaurantsLayout />
         </MainLayout>
     )
 }
