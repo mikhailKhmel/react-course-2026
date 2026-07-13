@@ -1,4 +1,4 @@
-import Counter from '../components/counter/counter'
+import Counter from '../counter/counter'
 import classes from './review-form.module.css'
 import useReviewForm from './use-review-form'
 

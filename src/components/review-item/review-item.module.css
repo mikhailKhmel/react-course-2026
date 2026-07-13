@@ -8,3 +8,7 @@
 .container > p {
     margin: 0;
 }
+
+.dark {
+    border-color: white;
+}
