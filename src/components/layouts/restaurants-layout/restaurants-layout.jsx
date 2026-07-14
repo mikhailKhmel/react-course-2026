@@ -1,33 +1,21 @@
-import { useState } from 'react'
 import RestaurantsTabs from '../../restaurants-tabs/restaurants-tabs'
-import { restaurants } from '../../../mocks/mock'
 import RestaurantView from '../../restaurant-view/restaurant-view'
+import { useSelector } from 'react-redux'
+import { selectCurrentRestaurantId } from '../../../store/features/restaurants-slice'
 
 export default function RestaurantsLayout() {
-    const [restaurant, setRestaurant] = useState(restaurants[0] ?? null)
+    const currentRestaurant = useSelector((state) =>
+        selectCurrentRestaurantId(state),
+    )
 
-    const handleAddReview = (review) => {
-        const originalRestaurant = restaurants.find(
-            (r) => r.id === restaurant.id,
-        )
-        originalRestaurant.reviews.push(review)
-
-        setRestaurant(structuredClone(originalRestaurant))
-    }
     return (
         <div>
-            <RestaurantsTabs
-                currentRestaurant={restaurant.id}
-                onChange={(id) =>
-                    setRestaurant(restaurants.find((r) => r.id === id))
-                }
-            />
+            <RestaurantsTabs />
             <div>
-                {restaurant ? (
+                {currentRestaurant ? (
                     <RestaurantView
-                        key={restaurant.id}
-                        restaurant={restaurant}
-                        onAddReview={handleAddReview}
+                        key={currentRestaurant}
+                        id={currentRestaurant}
                     />
                 ) : (
                     <p>Ресторан не выбран</p>

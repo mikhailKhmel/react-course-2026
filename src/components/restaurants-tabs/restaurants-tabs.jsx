@@ -1,20 +1,16 @@
-import { restaurants } from '../../mocks/mock'
+import { useSelector } from 'react-redux'
 import RestaurantTab from '../restaurant-tab/restaurant-tab'
 import classes from './restaurants-tabs.module.css'
+import { selectRestaurantsIds } from '../../store/features/restaurants-slice'
 
-export default function RestaurantsTabs({ currentRestaurant, onChange }) {
-    if (!restaurants || restaurants.length === 0)
+export default function RestaurantsTabs() {
+    const restaurantsIds = useSelector((state) => selectRestaurantsIds(state))
+    if (!restaurantsIds || restaurantsIds.length === 0)
         return <p>Данные отсутствуют</p>
     return (
         <div className={classes.tabs}>
-            {restaurants.map((r) => (
-                <RestaurantTab
-                    key={r.id}
-                    id={r.id}
-                    name={r.name}
-                    selected={currentRestaurant === r.id}
-                    onChange={onChange}
-                />
+            {restaurantsIds.map((id) => (
+                <RestaurantTab key={id} id={id} />
             ))}
         </div>
     )

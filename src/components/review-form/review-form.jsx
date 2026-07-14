@@ -3,9 +3,38 @@ import Counter from '../counter/counter'
 import classes from './review-form.module.css'
 import useReviewForm from './use-review-form'
 import AuthContext from '../providers/auth-provider/auth-context'
+import { useDispatch, useSelector } from 'react-redux'
+import {
+    addReviewToRestaurant,
+    selectRestaurantById,
+} from '../../store/features/restaurants-slice'
+import { addUser } from '../../store/features/users-slice'
+import { v4 } from 'uuid'
+import { addReview } from '../../store/features/reviews-slice'
 
-export default function ReviewForm({ onAddReview }) {
+export default function ReviewForm({ restaurantId }) {
     const { isAuth } = useContext(AuthContext)
+    const dispatch = useDispatch()
+    const currentRestaurant = useSelector((state) =>
+        selectRestaurantById(state, restaurantId),
+    )
+
+    const onAddReview = (review) => {
+        const userId = v4()
+        dispatch(addUser({ id: userId, name: review.user }))
+        dispatch(
+            addReview({
+                ...review,
+                userId,
+            }),
+        )
+        dispatch(
+            addReviewToRestaurant({
+                restuarantId: currentRestaurant.id,
+                reviewId: review.id,
+            }),
+        )
+    }
     const { state, disableClear, disableSubmit, onChange, onReset, onSubmit } =
         useReviewForm({ onAddItem: onAddReview })
 
