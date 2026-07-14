@@ -1,8 +1,11 @@
-import Counter from '../components/counter/counter'
+import { useContext } from 'react'
+import Counter from '../counter/counter'
 import classes from './review-form.module.css'
 import useReviewForm from './use-review-form'
+import AuthContext from '../providers/auth-provider/auth-context'
 
 export default function ReviewForm({ onAddReview }) {
+    const { isAuth } = useContext(AuthContext)
     const { state, disableClear, disableSubmit, onChange, onReset, onSubmit } =
         useReviewForm({ onAddItem: onAddReview })
 
@@ -29,14 +32,16 @@ export default function ReviewForm({ onAddReview }) {
             </div>
             <div className={classes.field}>
                 <label htmlFor='text'>Рейтинг</label>
-                <Counter
-                    count={state.rating}
-                    max={5}
-                    min={1}
-                    onChange={(delta) =>
-                        onChange('rating', state.rating + delta)
-                    }
-                />
+                {isAuth && (
+                    <Counter
+                        count={state.rating}
+                        max={5}
+                        min={1}
+                        onChange={(delta) =>
+                            onChange('rating', state.rating + delta)
+                        }
+                    />
+                )}
             </div>
             <div className={classes.buttonRow}>
                 <button disabled={disableClear} onClick={onReset}>

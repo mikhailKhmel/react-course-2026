@@ -1,5 +1,5 @@
-import ReviewForm from '../../review-form/review-form'
 import MenuList from '../menu-list'
+import ReviewForm from '../review-form/review-form'
 import Reviews from '../reviews/reviews'
 
 export default function RestaurantView({ restaurant, onAddReview }) {

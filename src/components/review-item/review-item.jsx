@@ -1,8 +1,18 @@
+import { useContext } from 'react'
 import classes from './review-item.module.css'
+import ThemeContext, {
+    DARK_THEME,
+} from '../providers/theme-provider/theme-context'
+import classNames from 'classnames'
 
 export default function ReviewItem({ user, text, rating }) {
+    const { theme } = useContext(ThemeContext)
     return (
-        <div className={classes.container}>
+        <div
+            className={classNames(classes.container, {
+                [classes.dark]: theme === DARK_THEME,
+            })}
+        >
             <p>Пользователь: {user}</p>
             <p>Ратинг: {rating}</p>
             <p>Текст отзыва:</p>

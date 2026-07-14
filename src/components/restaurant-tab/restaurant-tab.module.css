@@ -5,6 +5,14 @@
     cursor: pointer;
 }
 
-.tab[data-selected='true'] {
-    border: 1px solid red;
+.selected {
+    border-color: red;
+}
+
+.dark {
+    border-color: white;
+}
+
+.dark.selected {
+    border-color: red;
 }
