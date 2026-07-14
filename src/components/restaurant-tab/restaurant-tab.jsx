@@ -1,11 +1,12 @@
 import classNames from 'classnames'
 import classes from './restaurant-tab.module.css'
 import { useContext } from 'react'
-import ThemeContext from '../contexts/theme-context'
-import { DARK_THEME } from '../../App'
+import ThemeContext, {
+    DARK_THEME,
+} from '../providers/theme-provider/theme-context'
 
 export default function RestaurantTab({ id, name, selected, onChange }) {
-    const theme = useContext(ThemeContext)
+    const { theme } = useContext(ThemeContext)
     return (
         <div
             className={classNames(classes.tab, {

@@ -1,12 +1,13 @@
 import { useContext } from 'react'
 import ScrollBar from '../../scroll-bar/scroll-bar'
 import classes from './main-layout.module.css'
-import ThemeContext from '../../contexts/theme-context'
+import ThemeContext, {
+    DARK_THEME,
+} from '../../providers/theme-provider/theme-context'
 import classNames from 'classnames'
-import { DARK_THEME } from '../../../App'
 
 export default function MainLayout({ header, children, footer }) {
-    const theme = useContext(ThemeContext)
+    const { theme } = useContext(ThemeContext)
     return (
         <div
             className={classNames(classes.layout, {
