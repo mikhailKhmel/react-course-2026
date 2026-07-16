@@ -5,7 +5,7 @@ export default function MenuList({ menu }) {
     return (
         <ul>
             {menu.map((menuId) => (
-                <MenuItem key={menuId} id={menuId} />
+                <MenuItem key={menuId} dishId={menuId} />
             ))}
         </ul>
     )

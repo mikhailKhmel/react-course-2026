@@ -4,27 +4,19 @@ import { useContext } from 'react'
 import ThemeContext, {
     DARK_THEME,
 } from '../providers/theme-provider/theme-context'
-import { useDispatch, useSelector } from 'react-redux'
-import {
-    changeRestuarantTab,
-    selectCurrentRestaurantId,
-    selectRestaurantById,
-} from '../../store/features/restaurants-slice'
+import { useSelector } from 'react-redux'
+import { selectRestaurantById } from '../../store/features/restaurants-slice'
 
-export default function RestaurantTab({ id }) {
-    const dispatch = useDispatch()
-    const currentRestaurant = useSelector((state) =>
-        selectCurrentRestaurantId(state),
-    )
+export default function RestaurantTab({ id, selected, onChangeRestaurant }) {
     const restaurant = useSelector((state) => selectRestaurantById(state, id))
     const { theme } = useContext(ThemeContext)
     return (
         <div
             className={classNames(classes.tab, {
                 [classes.dark]: theme === DARK_THEME,
-                [classes.selected]: currentRestaurant === id,
+                [classes.selected]: selected,
             })}
-            onClick={() => dispatch(changeRestuarantTab(id))}
+            onClick={() => onChangeRestaurant(id)}
         >
             {restaurant.name}
         </div>
