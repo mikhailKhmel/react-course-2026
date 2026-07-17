@@ -7,8 +7,8 @@ export default function Reviews({ reviews }) {
 
     return (
         <div className={classes.container}>
-            {reviews.map((review) => (
-                <ReviewItem key={review.id} {...review} />
+            {reviews.map((id) => (
+                <ReviewItem key={id} id={id} />
             ))}
         </div>
     )

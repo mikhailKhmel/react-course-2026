@@ -10,7 +10,7 @@ export default function reviewFormReducer(state, action) {
             return { ...state, rating: action.payload }
         }
         case 'reset': {
-            return { ...state, name: '', text: '', rating: 1 }
+            return { ...state, user: '', text: '', rating: 1 }
         }
         default: {
             return state

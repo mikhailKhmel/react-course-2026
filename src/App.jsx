@@ -3,16 +3,20 @@ import RestaurantsLayout from './components/layouts/restaurants-layout/restauran
 import Header from './components/header/header'
 import AuthProvider from './components/providers/auth-provider/auth-provider'
 import ThemeProvider from './components/providers/theme-provider/theme-provder'
+import { Provider } from 'react-redux'
+import store from './store/store'
 
 function App() {
     return (
-        <ThemeProvider>
-            <AuthProvider>
-                <MainLayout header={<Header />} footer={'footer'}>
-                    <RestaurantsLayout />
-                </MainLayout>
-            </AuthProvider>
-        </ThemeProvider>
+        <Provider store={store}>
+            <ThemeProvider>
+                <AuthProvider>
+                    <MainLayout header={<Header />} footer={'footer'}>
+                        <RestaurantsLayout />
+                    </MainLayout>
+                </AuthProvider>
+            </ThemeProvider>
+        </Provider>
     )
 }
 

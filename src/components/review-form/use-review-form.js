@@ -1,5 +1,6 @@
 import { useReducer } from 'react'
 import reviewFormReducer from './review-form-reducer'
+import { v4 } from 'uuid'
 
 const useReviewForm = ({ onAddItem }) => {
     const [state, dispatch] = useReducer(reviewFormReducer, {
@@ -21,7 +22,7 @@ const useReviewForm = ({ onAddItem }) => {
 
     const onSubmit = (e) => {
         e.preventDefault()
-        onAddItem({ ...state })
+        onAddItem({ ...state, id: v4() })
         dispatch({ type: 'reset' })
     }
 
