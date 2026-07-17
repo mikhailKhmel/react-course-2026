@@ -4,8 +4,11 @@ import { useContext } from 'react'
 import ThemeContext, {
     DARK_THEME,
 } from '../providers/theme-provider/theme-context'
+import { useSelector } from 'react-redux'
+import { selectRestaurantById } from '../../store/features/restaurants-slice'
 
-export default function RestaurantTab({ id, name, selected, onChange }) {
+export default function RestaurantTab({ id, selected, onChangeRestaurant }) {
+    const restaurant = useSelector((state) => selectRestaurantById(state, id))
     const { theme } = useContext(ThemeContext)
     return (
         <div
@@ -13,9 +16,9 @@ export default function RestaurantTab({ id, name, selected, onChange }) {
                 [classes.dark]: theme === DARK_THEME,
                 [classes.selected]: selected,
             })}
-            onClick={() => onChange(id)}
+            onClick={() => onChangeRestaurant(id)}
         >
-            {name}
+            {restaurant.name}
         </div>
     )
 }
