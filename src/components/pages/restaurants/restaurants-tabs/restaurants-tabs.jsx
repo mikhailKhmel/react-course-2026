@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux'
 import classes from './restaurants-tabs.module.css'
-import { selectRestaurantsIds } from '../../../../store/features/restaurants-slice'
 import RestaurantTab from './restaurant-tab/restaurant-tab'
+import { selectRestaurantsIds } from '@/store/features/restaurants-slice'
 
 export default function RestaurantsTabs() {
     const restaurantsIds = useSelector(selectRestaurantsIds)

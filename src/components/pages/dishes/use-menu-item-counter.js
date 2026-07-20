@@ -3,7 +3,7 @@ import {
     addDish,
     removeDish,
     selectDishCount,
-} from '../../../store/features/cart-slice'
+} from '@/store/features/cart-slice'
 
 const useMenuItemCounter = ({ dishId }) => {
     const dispatch = useDispatch()

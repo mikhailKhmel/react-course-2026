@@ -1,9 +1,9 @@
 import { useContext } from 'react'
-import ScrollBar from '../../common/scroll-bar/scroll-bar'
+import ScrollBar from '@/components/common/scroll-bar/scroll-bar'
 import classes from './main-layout.module.css'
 import ThemeContext, {
     DARK_THEME,
-} from '../../providers/theme-provider/theme-context'
+} from '@/components/providers/theme-provider/theme-context'
 import classNames from 'classnames'
 import { Outlet } from 'react-router'
 import Header from './header/header'

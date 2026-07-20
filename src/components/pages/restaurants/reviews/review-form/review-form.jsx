@@ -1,17 +1,17 @@
 import { useContext } from 'react'
-import Counter from '../../../../common/counter/counter'
 import classes from './review-form.module.css'
 import useReviewForm from './use-review-form'
-import AuthContext from '../../../../providers/auth-provider/auth-context'
 import { useDispatch, useSelector } from 'react-redux'
+import { v4 } from 'uuid'
+import { useParams } from 'react-router'
+import AuthContext from '@/components/providers/auth-provider/auth-context'
 import {
     addReviewToRestaurant,
     selectRestaurantById,
-} from '../../../../../store/features/restaurants-slice'
-import { addUser } from '../../../../../store/features/users-slice'
-import { v4 } from 'uuid'
-import { addReview } from '../../../../../store/features/reviews-slice'
-import { useParams } from 'react-router'
+} from '@/store/features/restaurants-slice'
+import { addUser } from '@/store/features/users-slice'
+import { addReview } from '@/store/features/reviews-slice'
+import Counter from '@/components/common/counter/counter'
 
 export default function ReviewForm() {
     const { restaurantId } = useParams()

@@ -2,11 +2,11 @@ import { useContext } from 'react'
 import classes from './review-item.module.css'
 import classNames from 'classnames'
 import { useSelector } from 'react-redux'
+import { selectReviewById } from '@/store/features/reviews-slice'
+import { selectUserById } from '@/store/features/users-slice'
 import ThemeContext, {
     DARK_THEME,
-} from '../../../../providers/theme-provider/theme-context'
-import { selectUserById } from '../../../../../store/features/users-slice'
-import { selectReviewById } from '../../../../../store/features/reviews-slice'
+} from '@/components/providers/theme-provider/theme-context'
 
 export default function ReviewItem({ id }) {
     const { userId, rating, text } = useSelector((state) =>

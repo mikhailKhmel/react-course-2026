@@ -1,11 +1,11 @@
 import { useParams } from 'react-router'
 import classes from './reviews.module.css'
 import { useSelector } from 'react-redux'
-import { selectRestaurantById } from '../../../../store/features/restaurants-slice'
 import ReviewItem from './review-item/review-item'
 import { useContext } from 'react'
-import AuthContext from '../../../providers/auth-provider/auth-context'
 import ReviewForm from './review-form/review-form'
+import AuthContext from '@/components/providers/auth-provider/auth-context'
+import { selectRestaurantById } from '@/store/features/restaurants-slice'
 
 export default function Reviews() {
     const { restaurantId } = useParams()

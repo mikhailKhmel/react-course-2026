@@ -1,29 +1,19 @@
 import classNames from 'classnames'
 import classes from './header.module.css'
 import AuthButton from './auth-button/auth-button'
-import { NavLink } from 'react-router'
 import ThemeButton from './theme-button/theme-button'
+import CustomNavLink from '@/components/common/custom-navlink/custom-navlink'
 
 const Header = () => {
     return (
         <div className={classNames(classes.container)}>
             <nav className={classes.nav}>
-                <NavLink
-                    to='/'
-                    className={({ isActive }) =>
-                        isActive ? classes.active : classes.navlink
-                    }
-                >
+                <CustomNavLink to='/'>
                     <h3>Ресторанные отзывы</h3>
-                </NavLink>
-                <NavLink
-                    to='/restaurants'
-                    className={({ isActive }) =>
-                        isActive ? classes.active : classes.navlink
-                    }
-                >
+                </CustomNavLink>
+                <CustomNavLink to='/restaurants'>
                     Список ресторанов
-                </NavLink>
+                </CustomNavLink>
             </nav>
 
             <div className={classes.actions}>

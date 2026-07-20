@@ -1,10 +1,10 @@
 import { useSelector } from 'react-redux'
 import { useNavigate, useParams } from 'react-router'
-import { selectDishById } from '../../../store/features/dishes-slice'
 import useMenuItemCounter from './use-menu-item-counter'
 import { useContext } from 'react'
-import AuthContext from '../../providers/auth-provider/auth-context'
-import Counter from '../../common/counter/counter'
+import AuthContext from '@/components/providers/auth-provider/auth-context'
+import Counter from '@/components/common/counter/counter'
+import { selectDishById } from '@/store/features/dishes-slice'
 
 const DishView = () => {
     const navigate = useNavigate()

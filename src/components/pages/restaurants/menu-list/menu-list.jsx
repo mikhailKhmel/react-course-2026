@@ -1,7 +1,7 @@
 import { useParams } from 'react-router'
-import MenuItem from '../menu-item/menu-item'
 import { useSelector } from 'react-redux'
-import { selectRestaurantById } from '../../../../store/features/restaurants-slice'
+import { selectRestaurantById } from '@/store/features/restaurants-slice'
+import MenuItem from '../menu-item/menu-item'
 
 export default function MenuList() {
     const { restaurantId } = useParams()

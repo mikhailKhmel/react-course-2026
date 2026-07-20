@@ -1,6 +1,6 @@
 import { useContext } from 'react'
 import classes from './auth-button.module.css'
-import AuthContext from '../../../../providers/auth-provider/auth-context'
+import AuthContext from '@/components/providers/auth-provider/auth-context'
 
 const AuthButton = () => {
     const { isAuth, username, onAuth } = useContext(AuthContext)
